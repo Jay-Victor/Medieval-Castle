@@ -2,7 +2,10 @@
 
 《金鸢尾堡 / Castellum Aureliae》演示宣传片的全部脚本。
 
-成片 **2 分 04 秒 · 1920×1080 · 30 fps · H.264 + AAC**，约 190 MB，超过 GitHub 单文件上限，**未纳入仓库**。
+[中文](README.md) · [English](README.en.md)
+
+成片 **2 分 04 秒 · 1920×1080 · 30 fps · H.264 + AAC**，约 190 MB，超过 GitHub 单文件上限，
+**不进入 Git 历史**，而是作为 [Releases](https://github.com/Jay-Victor/Medieval-Castle/releases) 附件发布。
 按本文步骤可在本机完整重新生成（首次需要下载约 350 MB 的语音模型）。
 
 ## 分镜

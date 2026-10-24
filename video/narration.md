@@ -1,8 +1,10 @@
 # 解说文案 · 金鸢尾堡 / Castellum Aureliae
 
-> 成片：《金鸢尾堡-演示宣传片.mp4》· 2:04 · 1920×1080 · 30 fps
+> 成片《金鸢尾堡-演示宣传片.mp4》· 2:04 · 1920×1080 · 30 fps
 
 旁白：Kokoro-82M 中文神经语音（zf_xiaoxiao），语速 0.88。段与段之间留约 1 秒呼吸。
+
+[English version](narration.en.md)
 
 ## 序章 · 0:00
 

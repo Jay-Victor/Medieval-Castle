@@ -115,7 +115,11 @@ PASS — 79 pieces in 7 rooms
 - **画面**：以项目真实渲染截图为“舞台”，叠加程序化运镜、光标轨迹、点击涟漪、引线标注与胶片调色
 - **配乐**：D 小调持续低音 + 竖琴音型，程序化合成，按旁白包络自动闪避
 
-成片约 190 MB，超过 GitHub 单文件上限，未纳入仓库。完整制作流水线见 **[video/README.md](video/README.md)**，其中包含分镜、时间轴、旁白文案与重新生成的命令；文案正文见 [video/解说文案.md](video/解说文案.md)。
+成片约 190 MB，超过 GitHub 单文件上限，因此不进入 Git 历史，而是作为 **[Releases](../../releases)** 附件发布。
+
+完整制作流水线见 **[video/README.md](video/README.md)**，其中包含分镜、时间轴、音画做法与重新生成的命令；
+旁白文案见 [video/narration.md](video/narration.md)（[English](video/narration.en.md)），
+逐句字幕见 [video/subtitles.srt](video/subtitles.srt)。
 
 ```bash
 python video/make_tts_kokoro.py   # 旁白
