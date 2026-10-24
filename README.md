@@ -117,6 +117,9 @@ PASS — 79 pieces in 7 rooms
 
 成片约 190 MB，超过 GitHub 单文件上限，因此不进入 Git 历史，而是作为 **[Releases](../../releases)** 附件发布。
 
+**[▶ 下载成片](https://github.com/Jay-Victor/Medieval-Castle/releases/latest/download/Castellum-Aureliae-demo-film-1080p.mp4)**（190 MB）·
+[下载字幕](https://github.com/Jay-Victor/Medieval-Castle/releases/latest/download/Castellum-Aureliae-demo-film.srt)
+
 完整制作流水线见 **[video/README.md](video/README.md)**，其中包含分镜、时间轴、音画做法与重新生成的命令；
 旁白文案见 [video/narration.md](video/narration.md)（[English](video/narration.en.md)），
 逐句字幕见 [video/subtitles.srt](video/subtitles.srt)。

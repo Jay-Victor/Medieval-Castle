@@ -116,6 +116,9 @@ The project ships with a 2:04 demo film (1920×1080, 30 fps): ten chapters, a Ma
 
 The film is ~190 MB, above GitHub's per-file limit, so it does not live in Git history — it ships as a **[release](../../releases)** asset.
 
+**[▶ Download the film](https://github.com/Jay-Victor/Medieval-Castle/releases/latest/download/Castellum-Aureliae-demo-film-1080p.mp4)** (190 MB) ·
+[subtitles](https://github.com/Jay-Victor/Medieval-Castle/releases/latest/download/Castellum-Aureliae-demo-film.srt)
+
 The full pipeline — storyboard, timeline, how the picture and sound are made, rebuild commands — lives in
 **[video/README.en.md](video/README.en.md)**. The narration text is in
 [video/narration.en.md](video/narration.en.md) (中文: [narration.md](video/narration.md)), and the
