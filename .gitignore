@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# local tooling / caches
+.chrome-profile/
+.localappdata/
+.mnemon/
+tmp/
+*.log
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+
+# generated media & model artefacts
+video/assets/fonts/
+video/audio/segments*/
+video/audio/*.wav
+video/audio/*.mp3
+video/out/
+video/stills/
+video/qa/
+video/tts/
+
+# film deliverables (hundreds of MB — rebuild with video/README.md)
+金鸢尾堡-演示宣传片.mp4
+金鸢尾堡-演示宣传片.srt
+金鸢尾堡-旁白试听.mp3
+金鸢尾堡-画面.jpg

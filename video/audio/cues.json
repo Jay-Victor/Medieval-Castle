@@ -1,0 +1,83 @@
+{
+ "scenes": [
+  {
+   "id": "prologue",
+   "start": 0.0,
+   "end": 11.543,
+   "voice": 0.5,
+   "voice_dur": 9.443
+  },
+  {
+   "id": "orbit",
+   "start": 11.543,
+   "end": 23.493,
+   "voice": 11.893,
+   "voice_dur": 10.7
+  },
+  {
+   "id": "floors",
+   "start": 23.493,
+   "end": 35.652,
+   "voice": 23.843,
+   "voice_dur": 11.009
+  },
+  {
+   "id": "rooms",
+   "start": 35.652,
+   "end": 47.904,
+   "voice": 36.002,
+   "voice_dur": 11.052
+  },
+  {
+   "id": "explode",
+   "start": 47.904,
+   "end": 59.404,
+   "voice": 48.254,
+   "voice_dur": 10.35
+  },
+  {
+   "id": "garden",
+   "start": 59.404,
+   "end": 71.38,
+   "voice": 59.754,
+   "voice_dur": 10.776
+  },
+  {
+   "id": "audit",
+   "start": 71.38,
+   "end": 82.468,
+   "voice": 71.73,
+   "voice_dur": 9.938
+  },
+  {
+   "id": "daynight",
+   "start": 82.468,
+   "end": 96.5,
+   "voice": 82.818,
+   "voice_dur": 12.882
+  },
+  {
+   "id": "export",
+   "start": 96.5,
+   "end": 112.315,
+   "voice": 96.85,
+   "voice_dur": 13.615
+  },
+  {
+   "id": "coda",
+   "start": 112.315,
+   "end": 124.468,
+   "voice": 112.665,
+   "voice_dur": 7.153
+  }
+ ],
+ "clicks": [
+  24.673,
+  38.102,
+  48.784,
+  50.484,
+  72.48,
+  97.98
+ ],
+ "total": 124.468
+}

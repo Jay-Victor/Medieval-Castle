@@ -1,0 +1,44 @@
+{
+  "name": "castellum-aureliae",
+  "version": "1.1.0",
+  "private": true,
+  "description": "An interactive architectural maquette of a medieval castle, generated procedurally in the browser with Three.js",
+  "keywords": [
+    "three.js",
+    "webgl",
+    "3d",
+    "castle",
+    "procedural",
+    "architecture",
+    "gltf",
+    "medieval"
+  ],
+  "homepage": "https://github.com/Jay-Victor/Medieval-Castle#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jay-Victor/Medieval-Castle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jay-Victor/Medieval-Castle/issues"
+  },
+  "author": "Jay-Victor",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs",
+    "serve": "node server.mjs"
+  },
+  "dependencies": {
+    "@fontsource/alegreya-sans": "^5.3.0",
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.1"
+  }
+}

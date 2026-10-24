@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#12100d" />
+    <title>金鸢尾堡 · Castellum Aureliae</title>
+    <meta
+      name="description"
+      content="一座可以旋转、剖层、点灯并从每个角落凝视的中世纪城堡。"
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2319130d'/%3E%3Cpath d='M32 8l4 14 14-6-8 14 14 6-16 2 2 16-10-12-10 12 2-16-16-2 14-6-8-14 14 6z' fill='%23c7a25e'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./node_modules/@fontsource/cormorant-garamond/400.css" />
+    <link rel="stylesheet" href="./node_modules/@fontsource/cormorant-garamond/500.css" />
+    <link rel="stylesheet" href="./node_modules/@fontsource/cormorant-garamond/600.css" />
+    <link rel="stylesheet" href="./node_modules/@fontsource/cormorant-garamond/400-italic.css" />
+    <link rel="stylesheet" href="./node_modules/@fontsource/cormorant-garamond/500-italic.css" />
+    <link rel="stylesheet" href="./node_modules/@fontsource/alegreya-sans/400.css" />
+    <link rel="stylesheet" href="./node_modules/@fontsource/alegreya-sans/500.css" />
+    <link rel="stylesheet" href="./node_modules/@fontsource/alegreya-sans/700.css" />
+    <link rel="stylesheet" href="./node_modules/@fontsource/ibm-plex-mono/400.css" />
+    <link rel="stylesheet" href="./node_modules/@fontsource/ibm-plex-mono/500.css" />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./node_modules/three/build/three.module.js",
+          "three/addons/": "./node_modules/three/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body data-phase="day" data-panel="open">
+    <div id="app">
+      <canvas id="world" aria-label="可交互的中世纪城堡三维模型"></canvas>
+      <div class="atmosphere" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="edge-rules" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+
+      <header class="masthead" aria-label="城堡标题">
+        <div class="masthead__kicker">
+          <span class="folio">FOLIO <b>I</b></span>
+          <span class="hairline"></span>
+          <span>The Aurelian Archive · 1286</span>
+        </div>
+        <div class="masthead__lockup">
+          <h1>金鸢尾堡</h1>
+          <div class="latin">
+            <span>CASTELLUM</span>
+            <em>Aureliae</em>
+          </div>
+        </div>
+        <p class="masthead__sub">
+          一座为光而建的城堡<span class="dot">·</span>石墙、角楼，两座对称庭园，<br />
+          七十余件室内陈设，一部尚未写完的建筑手稿。
+        </p>
+        <button class="masthead__index" id="atlasTrigger" type="button">
+          <span class="index-number">09</span>
+          <span>
+            <b>房间索引</b>
+            <small>THE ROOM ATLAS</small>
+          </span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 13 3M6 3h7v7"/></svg>
+        </button>
+      </header>
+
+      <div class="orbit-hint" id="orbitHint">
+        <span class="orbit-hint__compass">
+          <svg viewBox="0 0 44 44" aria-hidden="true">
+            <circle cx="22" cy="22" r="20" fill="none" stroke="currentColor" stroke-width=".8"/>
+            <circle cx="22" cy="22" r="15.5" fill="none" stroke="currentColor" stroke-width=".4" stroke-dasharray="1 3"/>
+            <path d="M22 5v5M22 34v5M5 22h5M34 22h5" stroke="currentColor" stroke-width=".8"/>
+            <path d="m22 13 3.2 5.8L31 22l-5.8 3.2L22 31l-3.2-5.8L13 22l5.8-3.2Z" fill="currentColor" opacity=".85"/>
+          </svg>
+        </span>
+        <span>拖拽以环游 · 滚轮以靠近<br /><b>DRAG TO CIRCLE · SCROLL TO APPROACH</b></span>
+      </div>
+
+      <div id="roomLabels" class="room-labels" aria-label="房间标注"></div>
+
+      <aside class="panel" id="panel" aria-label="观览控制台">
+        <header class="panel__header">
+          <div class="panel__seal" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="22.5" fill="none" stroke="currentColor" stroke-width=".7"/>
+              <circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" stroke-width=".4" stroke-dasharray="1 4"/>
+              <path d="M24 8l2.6 8.5L35 13l-5.5 7.9L38 24l-8.5 3.1L35 35l-8.4-3.5L24 40l-2.6-8.5L13 35l5.5-7.9L10 24l8.5-3.1L13 13l8.4 3.5Z" fill="none" stroke="currentColor" stroke-width=".8"/>
+              <circle cx="24" cy="24" r="3" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="panel__title">
+            <span>THE OBSERVATORY</span>
+            <h2>观览台</h2>
+          </div>
+          <button class="icon-button panel__collapse" id="panelCollapse" type="button" aria-label="收起控制台">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </button>
+        </header>
+
+        <div class="panel__scroll">
+          <section class="console-section">
+            <div class="section-heading">
+              <span class="section-no">01</span>
+              <h3>楼层剖面</h3>
+              <span class="section-en">STOREYS</span>
+            </div>
+            <div class="floor-grid" role="group" aria-label="选择楼层">
+              <button class="floor-button is-active" data-floor="all" type="button">
+                <span class="floor-button__no">ALL</span>
+                <span class="floor-button__cn">全览</span>
+                <span class="floor-button__en">THE WHOLE</span>
+              </button>
+              <button class="floor-button" data-floor="ground" type="button">
+                <span class="floor-button__no">01</span>
+                <span class="floor-button__cn">大厅层</span>
+                <span class="floor-button__en">HALL</span>
+              </button>
+              <button class="floor-button" data-floor="solar" type="button">
+                <span class="floor-button__no">02</span>
+                <span class="floor-button__cn">领主层</span>
+                <span class="floor-button__en">SOLAR</span>
+              </button>
+              <button class="floor-button" data-floor="library" type="button">
+                <span class="floor-button__no">03</span>
+                <span class="floor-button__cn">藏书层</span>
+                <span class="floor-button__en">LIBRARY</span>
+              </button>
+              <button class="floor-button" data-floor="roof" type="button">
+                <span class="floor-button__no">04</span>
+                <span class="floor-button__cn">塔顶</span>
+                <span class="floor-button__en">BATTLEMENT</span>
+              </button>
+            </div>
+            <div class="floor-note" id="floorNote">
+              <span class="pulse-dot"></span>
+              <span>全览 · 所有楼层与屋顶开放</span>
+            </div>
+            <button class="explode-button" id="explodeToggle" type="button" aria-pressed="false">
+              <span class="explode-button__icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32">
+                  <path d="M6 24h20M8 20h16M10 16h12" stroke="currentColor" stroke-width=".9" fill="none"/>
+                  <path d="M16 11V4M13 7l3-3 3 3" stroke="currentColor" stroke-width=".9" fill="none"/>
+                  <rect x="4" y="23" width="24" height="5" rx=".5" fill="none" stroke="currentColor" stroke-width=".8"/>
+                </svg>
+              </span>
+              <span class="explode-button__text">
+                <b>分层展开</b>
+                <small>EXPLODED AXONOMETRIC</small>
+              </span>
+              <span class="toggle-switch" aria-hidden="true"><i></i></span>
+            </button>
+          </section>
+
+          <section class="console-section">
+            <div class="section-heading">
+              <span class="section-no">02</span>
+              <h3>图层</h3>
+              <span class="section-en">LAYERS · <b id="layerCount">06</b></span>
+            </div>
+            <div class="layer-list">
+              <label class="layer-row">
+                <span class="layer-swatch swatch-stone" aria-hidden="true"></span>
+                <span class="layer-row__text"><b>墙体与塔楼</b><small>STONE &amp; TOWERS</small></span>
+                <input type="checkbox" data-layer="structure" checked />
+                <span class="toggle-switch" aria-hidden="true"><i></i></span>
+              </label>
+              <label class="layer-row">
+                <span class="layer-swatch swatch-roof" aria-hidden="true"></span>
+                <span class="layer-row__text"><b>屋顶与垛口</b><small>ROOFS &amp; MERLONS</small></span>
+                <input type="checkbox" data-layer="roofs" checked />
+                <span class="toggle-switch" aria-hidden="true"><i></i></span>
+              </label>
+              <label class="layer-row">
+                <span class="layer-swatch swatch-wood" aria-hidden="true"></span>
+                <span class="layer-row__text"><b>家具与陈设</b><small>FURNISHINGS &amp; OBJECTS</small></span>
+                <input type="checkbox" data-layer="furniture" checked />
+                <span class="toggle-switch" aria-hidden="true"><i></i></span>
+              </label>
+              <label class="layer-row">
+                <span class="layer-swatch swatch-garden" aria-hidden="true"></span>
+                <span class="layer-row__text"><b>对称花园</b><small>GARDENS &amp; COURTS</small></span>
+                <input type="checkbox" data-layer="gardens" checked />
+                <span class="toggle-switch" aria-hidden="true"><i></i></span>
+              </label>
+              <label class="layer-row">
+                <span class="layer-swatch swatch-water" aria-hidden="true"></span>
+                <span class="layer-row__text"><b>地景与水系</b><small>LAND &amp; WATER</small></span>
+                <input type="checkbox" data-layer="terrain" checked />
+                <span class="toggle-switch" aria-hidden="true"><i></i></span>
+              </label>
+              <label class="layer-row">
+                <span class="layer-swatch swatch-label" aria-hidden="true"></span>
+                <span class="layer-row__text"><b>房间标注</b><small>ROOM LABELS</small></span>
+                <input type="checkbox" data-layer="labels" checked />
+                <span class="toggle-switch" aria-hidden="true"><i></i></span>
+              </label>
+            </div>
+          </section>
+
+          <section class="console-section console-section--export">
+            <div class="section-heading">
+              <span class="section-no">03</span>
+              <h3>带走这座城堡</h3>
+              <span class="section-en">ARCHIVE</span>
+            </div>
+            <button class="export-button" id="exportButton" type="button">
+              <span class="export-button__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 3v11m0 0 4-4m-4 4L8 10M5 16v3.5A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V16" fill="none" stroke="currentColor" stroke-width="1.1"/>
+                </svg>
+              </span>
+              <span><b>导出 GLB 模型</b><small>GLTF 2.0 · BINARY</small></span>
+              <span class="export-button__arrow">↗</span>
+            </button>
+            <button class="audit-card" id="auditButton" type="button">
+              <span class="audit-card__status"><i></i><b id="auditStatus">工艺审校中</b></span>
+              <span class="audit-card__detail" id="auditDetail">正在检查家具与墙体间距…</span>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+          </section>
+        </div>
+
+        <footer class="panel__footer">
+          <span>R 复位</span><span>L 标注</span><span>Space 巡日</span>
+          <span class="panel__edition">ED. 1286 / I</span>
+        </footer>
+      </aside>
+
+      <button class="panel-trigger" id="panelTrigger" type="button" aria-label="展开观览台">
+        <span>观览台</span>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+
+      <aside class="room-card" id="roomCard" aria-live="polite" aria-hidden="true">
+        <button class="icon-button room-card__close" id="roomCardClose" type="button" aria-label="关闭房间档案">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"/></svg>
+        </button>
+        <div class="room-card__heading">
+          <span class="room-card__no" id="roomNo">ROOM I</span>
+          <span class="room-card__floor" id="roomFloor">GROUND LEVEL</span>
+        </div>
+        <h2><span id="roomName">大厅</span><em id="roomLatin">The Great Hall</em></h2>
+        <p id="roomDescription"></p>
+        <div class="room-card__meta">
+          <div><span>楼层</span><b id="roomLevel">一层</b></div>
+          <div><span>陈设</span><b id="roomCount">—</b></div>
+          <div><span>光线</span><b id="roomLight">南向</b></div>
+        </div>
+        <div class="room-card__rule"></div>
+        <div class="room-card__features">
+          <span>室内所见</span>
+          <ul id="roomFeatures"></ul>
+        </div>
+        <div class="room-card__actions">
+          <button class="text-button" id="focusRoom" type="button">聚焦此室 <span>↗</span></button>
+          <button class="text-button text-button--muted" id="restoreView" type="button">返回全览</button>
+        </div>
+      </aside>
+
+      <section class="time-console" id="timeConsole" aria-label="太阳与时间">
+        <button class="cycle-button" id="cycleButton" type="button" aria-label="播放昼夜循环" aria-pressed="false">
+          <svg class="icon-play" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 8 6-8 6Z"/></svg>
+          <svg class="icon-pause" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4h2.5v12H6zM11.5 4H14v12h-2.5z"/></svg>
+        </button>
+        <div class="time-console__readout">
+          <span id="timePeriod">午后</span>
+          <strong id="timeClock">14:20</strong>
+        </div>
+        <div class="time-console__main">
+          <div class="time-track">
+            <div class="time-track__sky"></div>
+            <div class="time-track__ticks" aria-hidden="true">
+              <i style="--t:0%"></i><i style="--t:25%"></i><i style="--t:50%"></i><i style="--t:75%"></i><i style="--t:100%"></i>
+            </div>
+            <input id="timeSlider" type="range" min="0" max="24" step="0.02" value="14.33" aria-label="调整一天中的时间" />
+            <span class="time-track__sun" id="timeSun" aria-hidden="true"></span>
+          </div>
+          <div class="time-track__scale">
+            <button type="button" data-hour="5.6">黎明 <span>05:36</span></button>
+            <button type="button" data-hour="12">正午 <span>12:00</span></button>
+            <button type="button" data-hour="18.8">暮色 <span>18:48</span></button>
+            <button type="button" data-hour="23">子夜 <span>23:00</span></button>
+          </div>
+        </div>
+        <div class="time-console__phase">
+          <span class="phase-sun" id="phaseIcon" aria-hidden="true"></span>
+          <span><b id="solarPhase">白昼</b><small id="sunAltitude">SUN 48°</small></span>
+        </div>
+      </section>
+
+      <div class="scene-tools" aria-label="场景工具">
+        <button class="scene-tool" id="rotateButton" type="button" aria-pressed="false" title="自动旋转">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M15.8 7.2A6.4 6.4 0 1 0 16 12" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M15.5 3.6v4h-4" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>
+          <span>巡游</span>
+        </button>
+        <button class="scene-tool" id="resetButton" type="button" title="重置视角">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="m10 2.5.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8Z" fill="currentColor"/></svg>
+          <span>复位</span>
+        </button>
+      </div>
+
+      <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+      <dialog class="atlas-dialog" id="atlasDialog">
+        <button class="icon-button atlas-dialog__close" id="atlasClose" type="button" aria-label="关闭房间索引">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"/></svg>
+        </button>
+        <header class="atlas-dialog__header">
+          <span>THE ROOM ATLAS · AURELIA</span>
+          <h2>一座城堡的九个房间</h2>
+          <p>从挂毯后的大厅，到能摸到星辰的露台。选择一处，进入它的光线里。</p>
+        </header>
+        <div class="atlas-grid" id="atlasGrid"></div>
+      </dialog>
+
+      <dialog class="audit-dialog" id="auditDialog">
+        <button class="icon-button audit-dialog__close" id="auditClose" type="button" aria-label="关闭工艺审校">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"/></svg>
+        </button>
+        <div class="audit-dialog__seal" aria-hidden="true">A</div>
+        <span class="micro">SURVEY OF CRAFTSMANSHIP</span>
+        <h2>工艺审校</h2>
+        <p>每一件落地家具都经过平面占位与墙体净距复核。若发现重叠或出界，审校不会放行。</p>
+        <div class="audit-summary" id="auditSummary"></div>
+        <div class="audit-list" id="auditList"></div>
+      </dialog>
+
+      <div class="loader" id="loader" aria-live="polite">
+        <div class="loader__inner">
+          <div class="loader__crest" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width=".6" opacity=".5"/>
+              <circle cx="60" cy="60" r="44" fill="none" stroke="currentColor" stroke-width=".4" stroke-dasharray="1 6" opacity=".55"/>
+              <path d="M60 17v10M60 93v10M17 60h10M93 60h10" stroke="currentColor" stroke-width=".7" opacity=".6"/>
+              <path d="M60 31l4.8 15.3L80 51l-15.2 4.7L60 71l-4.8-15.3L40 51l15.2-4.7Z" fill="none" stroke="currentColor" stroke-width=".9"/>
+              <path d="M60 43v34M50 52l10 25 10-25" fill="none" stroke="currentColor" stroke-width=".7" opacity=".8"/>
+              <circle cx="60" cy="60" r="3.2" fill="currentColor"/>
+            </svg>
+          </div>
+          <span class="loader__over">AN ARCHITECTURAL FABLE</span>
+          <div class="loader__wordmark">Castellum <em>Aureliae</em></div>
+          <span class="loader__cn">正在点灯，安置最后一把椅子</span>
+          <div class="loader__progress"><i id="loaderProgress"></i></div>
+          <span class="loader__percent" id="loaderPercent">00</span>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

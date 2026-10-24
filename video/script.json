@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "金鸢尾堡",
+    "latin": "Castellum Aureliae",
+    "subtitle": "一座为光而建的城堡"
+  },
+  "scenes": [
+    {
+      "id": "prologue",
+      "kicker": "AN ARCHITECTURAL FABLE",
+      "title": "金鸢尾堡",
+      "latin": "Castellum Aureliae",
+      "text": "石墙记得一千个黄昏。这座城堡为光而建——金鸢尾堡，一座可以在浏览器里走进去的中世纪城堡。"
+    },
+    {
+      "id": "orbit",
+      "kicker": "01 · ORBIT",
+      "title": "绕着它走一圈",
+      "latin": "DRAG TO CIRCLE",
+      "text": "拖动鼠标，你可以绕着它走一圈；推动滚轮，塔楼的影子就近在脚边。没有固定的路线，只有你自己的视线。"
+    },
+    {
+      "id": "floors",
+      "kicker": "02 · STOREYS",
+      "title": "把城堡剖开",
+      "latin": "FLOOR SECTION",
+      "text": "点开楼层剖面，屋顶与墙面依次退去。藏书层的木地板、四柱床的帷幔、长桌上摊开的卷轴，都留在原来的位置。"
+    },
+    {
+      "id": "rooms",
+      "kicker": "03 · THE ROOM ATLAS",
+      "title": "九个房间，九种光线",
+      "latin": "NINE ROOMS",
+      "text": "九个房间，九种光线。每一间都有一份自己的档案：楼层、朝向、陈设数量，以及它为什么被安排在这里。"
+    },
+    {
+      "id": "explode",
+      "kicker": "04 · EXPLODED",
+      "title": "沿垂直轴展开",
+      "latin": "AXONOMETRIC",
+      "text": "打开分层展开，城堡沿着垂直轴缓缓升起。三层结构像一页摊开的手稿，一层一层，请你走进去看。"
+    },
+    {
+      "id": "garden",
+      "kicker": "05 · THE PARTERRE",
+      "title": "两座对称的庭园",
+      "latin": "MIRRORED GARDENS",
+      "text": "南向的晨露露台，是从卧室直接走进花园的一扇门。两座镜像的庭园，喷泉在中央，玫瑰拱廊围住整个午后。"
+    },
+    {
+      "id": "audit",
+      "kicker": "06 · SURVEY",
+      "title": "可以被复核的建造",
+      "latin": "CRAFTSMANSHIP",
+      "text": "七十九件陈设，逐件核对它们与墙的距离。没有一件穿墙，没有一件越界——这是一次可以被复核的建造。"
+    },
+    {
+      "id": "daynight",
+      "kicker": "07 · A DAY IN LIGHT",
+      "title": "一日之光",
+      "latin": "FROM DAWN TO MIDNIGHT",
+      "text": "拖动时间轴，太阳从黎明走到子夜。窗子先亮，然后是壁炉、灯柱，和满天星光。同一座城堡，一夜之间换了三次心情。"
+    },
+    {
+      "id": "export",
+      "kicker": "08 · ARCHIVE",
+      "title": "把它带走",
+      "latin": "GLB · BINARY",
+      "text": "如果愿意，就把它带走。一个不到十六兆的模型文件，五百多个网格，五十六万个三角面——可以导进任何三维软件，也可以放进你的下一个项目。"
+    },
+    {
+      "id": "coda",
+      "kicker": "CASTELLUM AURELIAE",
+      "title": "光，会在原来的位置等你",
+      "latin": "THE END",
+      "text": "金鸢尾堡。它不在石头里，它在浏览器里。打开它，光就亮了。"
+    }
+  ]
+}
