@@ -67,7 +67,7 @@ python video/make_audio.py             # → video/out/mix.wav
 
 # 4 · 合成
 ffmpeg -y -i video/out/video-final.mp4 -i video/out/mix.wav \
-  -c:v copy -c:a aac -b:a 192k -movflags +faststart "金鸢尾堡-演示宣传片.mp4"
+  -c:v copy -c:a aac -b:a 192k -movflags +faststart “金鸢尾堡-演示宣传片.mp4”
 
 # 5 · 字幕与文案
 python video/make_srt.py
@@ -86,7 +86,7 @@ python video/lib/mk_doc.py
   再经 `hqdn3d` 轻降噪与 x264 CRF 22 编码。
 
 > 说明：受运行环境限制，本片不是屏幕录制，而是由真实渲染截图 + 程序化运镜与光标编排合成，
-> 观感接近录屏，但画面中的"旋转"是推镜而非真实转动视角。
+> 观感接近录屏，但画面中的“旋转”是推镜而非真实转动视角。
 
 ## 声音做法
 
