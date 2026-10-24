@@ -14,7 +14,9 @@
 
 </div>
 
-![白昼总览](previews/hero-day.png)
+[![金鸢尾堡 · 演示宣传片 —— 点击观看](previews/film-poster.jpg)](https://github.com/Jay-Victor/Medieval-Castle/releases/latest/download/Castellum-Aureliae-demo-film-1080p.mp4)
+
+**▶ [观看 2 分 04 秒演示宣传片](https://github.com/Jay-Victor/Medieval-Castle/releases/latest/download/Castellum-Aureliae-demo-film-1080p.mp4)** · 1920×1080 · 30 fps · 中文旁白 · [字幕](https://github.com/Jay-Victor/Medieval-Castle/releases/latest/download/Castellum-Aureliae-demo-film.srt)
 
 ---
 

@@ -14,7 +14,9 @@
 
 </div>
 
-![Daylight overview](previews/hero-day.png)
+[![Castellum Aureliae — demo film, click to watch](previews/film-poster.jpg)](https://github.com/Jay-Victor/Medieval-Castle/releases/latest/download/Castellum-Aureliae-demo-film-1080p.mp4)
+
+**▶ [Watch the 2:04 demo film](https://github.com/Jay-Victor/Medieval-Castle/releases/latest/download/Castellum-Aureliae-demo-film-1080p.mp4)** · 1920×1080 · 30 fps · Mandarin narration · [subtitles](https://github.com/Jay-Victor/Medieval-Castle/releases/latest/download/Castellum-Aureliae-demo-film.srt)
 
 ---
 

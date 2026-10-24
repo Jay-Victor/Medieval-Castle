@@ -42,6 +42,7 @@ lib/fonts.py         @fontsource 的 woff → ttf 转换（Pillow 需要 ttf）
 lib/fetch_model.mjs  从 hf-mirror 下载模型与音色
 lib/fetch_wheels.mjs 从 PyPI 镜像下载依赖 wheel
 lib/install_tts.py   解包 wheel 与 jieba sdist
+lib/make_poster.py   生成 README 顶部的可点击封面（previews/film-poster.jpg）
 ```
 
 ## 环境准备

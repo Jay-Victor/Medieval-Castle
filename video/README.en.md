@@ -42,6 +42,7 @@ lib/fonts.py         woff → ttf conversion for the @fontsource faces Pillow ne
 lib/fetch_model.mjs  pull the model and voices from hf-mirror
 lib/fetch_wheels.mjs pull the Python wheels from a PyPI mirror
 lib/install_tts.py   unpack the wheels and the jieba sdist
+lib/make_poster.py   build the clickable poster used at the top of the READMEs
 ```
 
 ## Setup
